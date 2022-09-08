@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const SHA256 = message => crypto.createHash("sha256").update(message).digest("hex");
 
 class Block {
-    constructor(data = [], timestamp = Math.floor(Date.now() / 1000)) {
+    constructor(data = [], timestamp = Date.now()) {
         this.timestamp = timestamp;
         this.data = data;
         this.hash = this.getHash();

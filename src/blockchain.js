@@ -4,7 +4,7 @@ class Blockchain {
     constructor() {
         // Blockchain config
         this.difficulty = 1;
-        this.blockTime = 10;
+        this.blockTime = 10 * 1e3;
 
         // Create our first genesis block
         const genesisBlock = new Block();
@@ -28,7 +28,7 @@ class Blockchain {
         return this.chain[this.chain.length - 1];
     }
     recalculateDifference() {
-        const difference = (Math.floor(Date.now() / 1000) - this.getLastBlock().timestamp);
+        const difference = (Date.now() - this.getLastBlock().timestamp);
         console.log('last block time', difference);
         this.difficulty += difference < this.blockTime ? 1 : -1;
         console.log("new difficulty", this.difficulty);
