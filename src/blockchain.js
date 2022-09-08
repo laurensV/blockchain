@@ -19,6 +19,20 @@ class Blockchain {
     getLastBlock() {
         return this.chain[this.chain.length - 1];
     }
+    isValid() {
+        // Iterate over the chain, skipping the genesis block
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const prevBlock = this.chain[i - 1];
+
+            // Check validation
+            if (currentBlock.hash !== currentBlock.getHash() || prevBlock.hash !== currentBlock.prevHash) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 module.exports = Blockchain;
