@@ -2,18 +2,23 @@ const Block = require("./block.js");
 
 class Blockchain {
     constructor() {
+        this.difficulty = 1;
+
         // Create our first genesis block
         const genesisBlock = new Block();
-
+        // Mine a nonce resulting a `valid` hash
+        genesisBlock.mine(this.difficulty)
         // Chain will contain all the blocks
         this.chain = [Object.freeze(genesisBlock)];
+
     }
     addBlock(block) {
         // add the hash of the last block of this chain
         block.prevHash = this.getLastBlock().hash;
         // recalculate the block hash now that we set prevHash
         block.hash = block.getHash();
-        // Object.freeze ensures immutability in our code
+        // mine a nonce for this block resulting in a 'valid' hash
+        block.mine(this.difficulty);
         this.chain.push(Object.freeze(block));
     }
     getLastBlock() {
