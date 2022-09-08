@@ -2,7 +2,9 @@ const Block = require("./block.js");
 
 class Blockchain {
     constructor() {
+        // Blockchain config
         this.difficulty = 1;
+        this.blockTime = 30;
 
         // Create our first genesis block
         const genesisBlock = new Block();
@@ -20,9 +22,16 @@ class Blockchain {
         // mine a nonce for this block resulting in a 'valid' hash
         block.mine(this.difficulty);
         this.chain.push(Object.freeze(block));
+        this.recalculateDifference();
     }
     getLastBlock() {
         return this.chain[this.chain.length - 1];
+    }
+    recalculateDifference() {
+        const difference = (Math.floor(Date.now() / 1000) - this.getLastBlock().timestamp);
+        console.log('last block time', difference);
+        this.difficulty += difference < this.blockTime ? 1 : -1;
+        console.log("new difficulty", this.difficulty);
     }
     isValid() {
         // Iterate over the chain, skipping the genesis block
