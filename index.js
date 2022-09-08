@@ -1,4 +1,6 @@
-const { Block } = require("./src/index.js");
+const { Block, Blockchain } = require("./src/index.js");
 
+const blockchain = new Blockchain()
 const block = new Block();
-console.log(block);
+blockchain.addBlock(block);
+console.log(blockchain);

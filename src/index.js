@@ -1,3 +1,4 @@
 const Block = require("./block.js");
+const Blockchain = require("./blockchain.js");
 
-module.exports = { Block };
+module.exports = { Block, Blockchain };
