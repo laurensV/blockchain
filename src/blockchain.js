@@ -4,7 +4,7 @@ class Blockchain {
     constructor() {
         // Blockchain config
         this.difficulty = 1;
-        this.blockTime = 30;
+        this.blockTime = 10;
 
         // Create our first genesis block
         const genesisBlock = new Block();
