@@ -12,5 +12,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 'ls'
         run: ls -al
+      - name: 'cat'
+        run: cat .nosana-ci.yml
       - name: 'echo'
-        run: echo test1
+        run: echo test2
