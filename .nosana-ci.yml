@@ -1,5 +1,5 @@
 nosana:
-  description: Nosana-Node Pipeline 3
+  description: Nosana-Node Pipeline 5
 
 global:
   image: registry.hub.docker.com/library/ubuntu:latest
