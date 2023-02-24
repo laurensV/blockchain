@@ -9,7 +9,7 @@ global:
       - all
 
 jobs:
-  - name: First Job 3
+  - name: First Job 4
     commands:
       - export FOO=BAR
       - echo $FOO
